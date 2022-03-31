@@ -13,6 +13,7 @@ const register = async (req, res) => {
       newErrors = errors.array().map((err) => {
         return { key: err.param, message: err.message };
       });
+      console.log("hey");
       return res.status(400).send({ errors: newErrors });
     }
 
@@ -46,12 +47,6 @@ const login = async (req, res) => {
       return res.status(400).send({ message: "please try again" });
     }
     const token = newToken(user);
-
-    // res.cookie("jwt", token, {
-    //   expires: new Date(date.now() + 3000000),
-    //   httpOnly: true,
-    // });
-    // res.cookie("token", token).json({ user }).send({ user, token });
 
     res.send({ user, token });
   } catch (err) {
