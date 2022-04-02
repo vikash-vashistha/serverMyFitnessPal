@@ -15,12 +15,12 @@ passport.use(
     },
     async function (request, accessToken, refreshToken, profile, done) {
       let user = await User.findOne({ email: profile?.email }).lean().exec();
-
+      
       if (!user) {
         user = await User.create({
           email: profile?.email,
           password: uuidv4(),
-          role: ["customer"],
+          // role: ["customer"],
         });
       }
 

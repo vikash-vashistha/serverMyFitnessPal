@@ -2,6 +2,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const { validationResult } = require("express-validator");
+
 const newToken = (user) => {
   return jwt.sign({ user }, process.env.JWT_SECRET_KEY);
 };
@@ -53,4 +54,4 @@ const login = async (req, res) => {
     res.status(500).send(err.message);
   }
 };
-module.exports = { register, login };
+module.exports = { register, login, newToken };
