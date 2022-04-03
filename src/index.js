@@ -5,7 +5,12 @@ const { register, login, newToken } = require("./controllers/auth.controller");
 const { body } = require("express-validator");
 const passport = require("./configs/google-oauth");
 
+///--sagar change----//
+const allappController = require("./controllers/allapp.controller");
+app.use(cors());
+app.use("/allapps", allappController);
 
+//------------------------//-------------
 const app = express();
 
 app.use(express.json());
